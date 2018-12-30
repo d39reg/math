@@ -63,4 +63,4 @@ function math(txt)
   return getToken(parseInteger());
 
 }
-//alert(math('2*(4+3)*(1+2):2'));
+//alert(math('2*(4+3)*(1+2):2,4'));
