@@ -10,9 +10,11 @@ function math(txt)
     var s = txt.charAt(i++);
     var flt = '';
     while(s == ' ') s = txt.charAt(i++); // delete white symbol
-    if (s >= '0' && s <= '9')
+    if ((s >= '0' && s <= '9') || s == '-')
     {
       var point = false;
+      flt += s;
+      s = txt.charAt(i++);
       while(((s >= '0' && s <= '9') || s == ',') && i <= len)
       {
         if(s == ',') 
