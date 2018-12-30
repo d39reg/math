@@ -5,7 +5,7 @@ function math(txt)
   var len = txt.length;
   if(!len) return 0;
 
-  function parseInteger() // function convertion from text to integer
+  function parseInteger() // function convertion from text to numbers
   {
     var s = txt.charAt(i++);
     var flt = '';
@@ -32,19 +32,19 @@ function math(txt)
   {
     var s = txt.charAt(i-1);
     while(s == ' ') s = txt.charAt(i++); // delete white symbols
-    if(s == '+') // the symbol `+` allows to sum integers
+    if(s == '+') // the symbol `+` allows to sum numbers
     {
       return flt + getToken(parseInteger());
     }
-    else if(s == '-') // the symbol `-` allows to subtract integers
+    else if(s == '-') // the symbol `-` allows to subtract numbers
     {
       return flt - getToken(parseInteger());
     }
-    else if(s == '*') // the symbol `*` allows to multiply integers
+    else if(s == '*') // the symbol `*` allows to multiply numbers
     {
       return flt * getToken(parseInteger());
     }
-    else if(s == ':') // the symbol `:` allows to devide integers
+    else if(s == ':') // the symbol `:` allows to devide numbers
     {
       return flt / getToken(parseInteger());
     }
