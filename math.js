@@ -5,15 +5,21 @@ function math(txt)
   var len = txt.length;
   if(!len) return 0;
 
-  function parseInteger()
+  function parseInteger() // function convertion from text to integer
   {
     var s = txt.charAt(i++);
     var flt = '';
     while(s == ' ') s = txt.charAt(i++); // delete white symbol
     if (s >= '0' && s <= '9')
     {
-      while(((s >= '0' && s <= '9') || s == '.') && i <= len)
+      var point = false;
+      while(((s >= '0' && s <= '9') || s == ',') && i <= len)
       {
+        if(s == ',') 
+        {
+          if(point) alert('Error integer!');
+          else s = '.';
+        }
         flt += s;
         s = txt.charAt(i++);
       }
@@ -25,20 +31,20 @@ function math(txt)
   function getToken(flt)
   {
     var s = txt.charAt(i-1);
-    while(s == ' ') s = txt.charAt(i++); // delete white symbol
-    if(s == '+')
+    while(s == ' ') s = txt.charAt(i++); // delete white symbols
+    if(s == '+') // the symbol `+` allows to sum integers
     {
       return flt + getToken(parseInteger());
     }
-    else if(s == '-')
+    else if(s == '-') // the symbol `-` allows to subtract integers
     {
       return flt - getToken(parseInteger());
     }
-    else if(s == '*')
+    else if(s == '*') // the symbol `*` allows to multiply integers
     {
       return flt * getToken(parseInteger());
     }
-    else if(s == ':')
+    else if(s == ':') // the symbol `:` allows to devide integers
     {
       return flt / getToken(parseInteger());
     }
@@ -50,7 +56,7 @@ function math(txt)
     {
       i++;
     }
-    else if(s !='') alert('Error symbol `'+s+'`!');
+    else if(s !='') alert('Error symbol `'+s+'`!'); // error math code
     return flt;
   }
 
